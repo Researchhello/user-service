@@ -7,7 +7,7 @@ phases:
       - aws --version
       - REPOSITORY_URI=396608773470.dkr.ecr.ca-central-1.amazonaws.com/manisky-techie
       - aws ecr get-login-password --region ca-central-1 | docker login --username AWS --password-stdin $REPOSITORY_URI
-      - COMMIT_HASH = $(echo $CODEBUILD_RESOLVED_SOURCE_VERSION | cut -c 1-7)
+      - COMMIT_HASH=$(echo $CODEBUILD_RESOLVED_SOURCE_VERSION | cut -c 1-7)
       - IMAGE_TAG=build -$(echo $CODEBUILD_BUILD_ID | awk -F":" '{print $2})
   build:
     commands:
