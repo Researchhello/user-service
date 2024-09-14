@@ -3,7 +3,7 @@ phases:
     commands:
       - mvn clean install
       - echo Logging in to AMAZON ECR....
-      - aws -version
+      - aws --version
       - REPOSITORY_URI=396608773470.dkr.ecr.ca-central-1.amazonaws.com/manisky-techie
       - aws ecr get-login-password --region Central | docker login --username AWS --password-stdin $REPOSITORY_URI
       - COMMIT_HASH = $(echo $CODEBUILD_RESOLVED_SOURCE_VERSION | cut -c 1-7)
