@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+    http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.24.xsd">
+
+    <changeSet id="10" author="ecommerce">
+        <comment>Create indexes for performance</comment>
+
+        <!-- Index on email for faster login -->
+        <createIndex tableName="users" indexName="idx_users_email">
+            <column name="email"/>
+        </createIndex>
+
+        <!-- Index on provider for OAuth queries -->
+        <createIndex tableName="users" indexName="idx_users_provider">
+            <column name="provider"/>
+            <column name="provider_id"/>
+        </createIndex>
+
+        <!-- Index on created_at for sorting -->
+        <createIndex tableName="users" indexName="idx_users_created_at">
+            <column name="created_at"/>
+        </createIndex>
+
+        <!-- Index on user_roles for faster role lookups -->
+        <createIndex tableName="user_roles" indexName="idx_user_roles_user_id">
+            <column name="user_id"/>
+        </createIndex>
+
+        <!-- Index on addresses for faster user address lookups -->
+        <createIndex tableName="addresses" indexName="idx_addresses_user_id">
+            <column name="user_id"/>
+        </createIndex>
+
+        <!-- Composite index for default addresses -->
+        <createIndex tableName="addresses" indexName="idx_addresses_user_default">
+            <column name="user_id"/>
+            <column name="is_default"/>
+        </createIndex>
+    </changeSet>
+</databaseChangeLog>
