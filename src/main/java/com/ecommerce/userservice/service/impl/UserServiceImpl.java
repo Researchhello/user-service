@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.UUID;
 import java.util.stream.Collectors;
 
 @Service
@@ -22,7 +23,8 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public UserResponse getUserById(String id) {
-        User user = userRepository.findById(id)
+        UUID requestUUID = UUID.fromString(id);
+        User user = userRepository.findById(requestUUID)
                 .orElseThrow(() -> new ResourceNotFoundException("User not found with id: " + id));
         return userMapper.toUserResponse(user);
     }
@@ -44,7 +46,8 @@ public class UserServiceImpl implements UserService {
     @Override
     @Transactional
     public UserResponse updateUser(String id, User userDetails) {
-        User user = userRepository.findById(id)
+        UUID requestUUID = UUID.fromString(id);
+        User user = userRepository.findById(requestUUID)
                 .orElseThrow(() -> new ResourceNotFoundException("User not found with id: " + id));
 
         user.setFirstName(userDetails.getFirstName());
@@ -58,7 +61,8 @@ public class UserServiceImpl implements UserService {
     @Override
     @Transactional
     public void deleteUser(String id) {
-        User user = userRepository.findById(id)
+        UUID requestUUID = UUID.fromString(id);
+        User user = userRepository.findById(requestUUID)
                 .orElseThrow(() -> new ResourceNotFoundException("User not found with id: " + id));
         userRepository.delete(user);
     }

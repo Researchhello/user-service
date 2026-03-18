@@ -55,7 +55,7 @@ public class AuthServiceImpl implements AuthService {
         
         return JwtResponse.builder()
             .token(jwt)
-            .id(user.getId())
+            .id(String.valueOf(user.getId()))
             .email(user.getEmail())
             .firstName(user.getFirstName())
             .lastName(user.getLastName())
@@ -79,6 +79,11 @@ public class AuthServiceImpl implements AuthService {
             .phoneNumber(registerRequest.getPhoneNumber())
             .provider(AuthProvider.LOCAL)
             .emailVerified(false)
+            // CRITICAL: Set all account status flags to true
+            .accountNonExpired(true)
+            .accountNonLocked(true)
+            .credentialsNonExpired(true)
+            .enabled(true)
             .build();
         
         // Assign default role

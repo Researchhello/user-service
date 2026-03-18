@@ -50,7 +50,7 @@ eureka:
     prefer-ip-address: true
 
 jwt:
-  secret: mySecretKeyForJWTTokenGenerationAndValidation2023Secure
+  secret: d93322a3526b5965c8cf7dd5e314fbfd2d83a9145ed2354fde7801f4c391841d4c28d5485497632cad1b20a09f887f2b9593585bd20d192f31bc1d9dd032fd74
   expiration: 86400000 # 24 hours in milliseconds
 
 management:

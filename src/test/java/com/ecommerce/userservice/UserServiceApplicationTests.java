@@ -1,12 +1,12 @@
 package com.ecommerce.userservice;
 
-/*import org.junit.jupiter.api.Test;
-import org.springframework.boot.test.context.SpringBootTest;*/
+import org.junit.jupiter.api.Test;
+import org.springframework.boot.test.context.SpringBootTest;
 
-//@SpringBootTest
+@SpringBootTest
 class UserServiceApplicationTests {
 
-   //@Test
+   @Test
     void contextLoads() {
     }
 

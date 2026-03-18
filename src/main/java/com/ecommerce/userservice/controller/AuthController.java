@@ -4,6 +4,8 @@ import com.ecommerce.userservice.dto.request.LoginRequest;
 import com.ecommerce.userservice.dto.request.RegisterRequest;
 import com.ecommerce.userservice.dto.response.JwtResponse;
 import com.ecommerce.userservice.dto.response.UserResponse;
+import com.ecommerce.userservice.entity.Role;
+import com.ecommerce.userservice.repository.UserRepository;
 import com.ecommerce.userservice.service.AuthService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
